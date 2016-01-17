@@ -39,7 +39,7 @@
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(reviewId)
 
-	}
+	};
 	CREATE TABLE comment{
 	commentId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
@@ -53,7 +53,7 @@
 
 	PRIMARY KEY(commentId)
 
-	}
+	};
 	CREATE TABLE helpfulVote{
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
@@ -76,7 +76,7 @@
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(questionId)
 
-	}
+	};
 	CREATE TABLE answer{
 	answerId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
@@ -87,7 +87,7 @@
 	FOREIGN KEY(questionId) REFERENCES question(questionId),
 	PRIMARY KEY(answerId)
 
-	}
+	};
 
 
 
