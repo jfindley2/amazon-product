@@ -1,10 +1,12 @@
-DROP TABLE IF EXISTS product;
-	 DROP TABLE IF EXISTS profile;
-	 DROP TABLE IF EXISTS review;
-	 DROP TABLE IF EXISTS comment;
-	 DROP TABLE IF EXISTS helpfulVote;
-	 DROP TABLE IF EXISTS question;
-	 DROP TABLE IF EXISTS answer;
+
+
+	DROP TABLE IF EXISTS answer;
+	DROP TABLE IF EXISTS question;
+	DROP TABLE IF EXISTS helpfulVote;
+	DROP TABLE IF EXISTS comment;
+	DROP TABLE IF EXISTS review;
+	DROP TABLE IF EXISTS profile;
+	DROP TABLE IF EXISTS product;
 
 
 	CREATE TABLE product{
@@ -84,3 +86,4 @@ DROP TABLE IF EXISTS product;
 	FOREIGN KEY(questionId) REFERENCES question(questionId),
 	PRIMARY KEY(answerId)
 	};
+
