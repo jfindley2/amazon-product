@@ -1,4 +1,7 @@
 
+ -- If I were to add more, I would include the fact that the product itself has an average
+ -- Of the star votes given in reviews, the fact that a single product page can have multiple
+ -- Products each with their own prices, images, descriptions, and questions.
 
 	DROP TABLE IF EXISTS answer;
 	DROP TABLE IF EXISTS question;
@@ -11,6 +14,7 @@
 
 	CREATE TABLE product(
 	productId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	-- I'm not entirely certain as to what the image variable will look like.
 	productImage
 	productPrice INT UNSIGNED NOT NULL,
 	additionalInfo VARCHAR(256) NOT NULL,
@@ -35,6 +39,7 @@
 	productId INT UNSIGNED NOT NULL,
 	reviewText VARCHAR(256) NOT NULL,
 	reviewDate TIMESTAMP NOT NULL,
+	-- The Star Vote will be from 1 to 5, with half increments.
 	starVote TINYINT UNSIGNED NOT NULL,
 	INDEX(profileId),
 	UNIQUE(productId),
