@@ -7,16 +7,16 @@
 	<body>
 		<h1>Entities</h1>
 		<p><br/>m profiles give n Reviews.<br/>
-			1 Product receives n Reviews<br/>
+			1 Product receives n Reviews<br/><br/>
 
 			1 Review receives m Helpful Votes.<br/>
-			m Profiles give m Helpful Votes.<br/>
+			m Profiles give m Helpful Votes.<br/><br/>
 
 			m Profiles give n Comments.<br/>
-			1 Review receives n Comments.<br/>
+			1 Review receives n Comments.<br/><br/>
 
 			m profiles ask n Questions.<br/>
-			1 Product hosts n Questions<br/>
+			1 Product hosts n Questions<br/><br/>
 
 			m Profiles respond with n answers.<br/>
 			1 Question receives n answers.<br/><br/>
