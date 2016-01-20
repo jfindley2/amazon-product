@@ -34,31 +34,38 @@
 	profileId INT UNSIGNED NOT NULL,
 	productId INT UNSIGNED NOT NULL,
 	reviewText VARCHAR(256) NOT NULL,
-	reviewDate DATETIME NOT NULL,
+	reviewDate TIMESTAMP NOT NULL,
 	starVote TINYINT UNSIGNED NOT NULL,
+	INDEX(profileId),
+	UNIQUE(productId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(reviewId)
 	};
 
+ -- In comment, as in answer, a user can actually respond multiple times. Ipso Facto,
+ -- profileId is not unique in the following.
 	CREATE TABLE comment{
 	commentId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
 	commentText VARCHAR(256) NOT NULL,
-	commentDate DATETIME NOT NULL,
+	commentDate TIMESTAMP NOT NULL,
 	INDEX(profileId),
-	INDEX(reviewId),
+	UNIQUE(reviewId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
 	PRIMARY KEY(commentId)
 	};
 
+ -- I need to add a value to helpful vote--boolean? Binary? Tinyint?
+ -- By the way, "Helpful Vote," refers to how the reviews can be reviewed as either,
+ -- "Helpful," or, "Not Helpful" on amazon. Each user can only vote on a review once.
 	CREATE TABLE helpfulVote{
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
-	INDEX(profileId),
-	INDEX(reviewId),
+	UNIQUE(profileId),
+	UNIQUE(reviewId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
 	PRIMARY KEY(profileId, reviewId)
@@ -69,8 +76,10 @@
 	questionID INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	productId INT UNSIGNED NOT NULL,
-	questionDate DATETIME NOT NULL,
+	questionDate TIMESTAMP NOT NULL,
 	questionText VARCHAR(256) NOT NULL,
+	INDEX(profileId),
+	UNIQUE(productId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(questionId)
@@ -80,8 +89,10 @@
 	answerId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	questionId INT UNSIGNED NOT NULL,
-	answerDate DATETIME NOT NULL,
+	answerDate TIMESTAMP NOT NULL,
 	answerText VARCHAR(256) NOT NULL,
+	INDEX(profileId),
+	UNIQUE(questionId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(questionId) REFERENCES question(questionId),
 	PRIMARY KEY(answerId)
