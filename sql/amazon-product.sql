@@ -9,7 +9,7 @@
 	DROP TABLE IF EXISTS product;
 
 
-	CREATE TABLE product{
+	CREATE TABLE product(
 	productId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	productImage
 	productPrice INT UNSIGNED NOT NULL,
@@ -18,18 +18,18 @@
 	technicalDetails VARCHAR(256) NOT NULL,
 	productName VARCHAR(256) NOT NULL,
 	PRIMARY KEY(productId)
-	};
+	);
 
-	CREATE TABLE profile{
+	CREATE TABLE profile(
 	profileID INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	name VARCHAR(20) NOT NULL,
 	location VARCHAR(20),
 	blurb VARCHAR(20),
 	UNIQUE(name),
 	PRIMARY KEY(profileId)
-	};
+	);
 
-	CREATE TABLE review{
+	CREATE TABLE review(
 	reviewId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	productId INT UNSIGNED NOT NULL,
@@ -41,11 +41,11 @@
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(reviewId)
-	};
+	);
 
  -- In comment, as in answer, a user can actually respond multiple times. Ipso Facto,
  -- profileId is not unique in the following.
-	CREATE TABLE comment{
+	CREATE TABLE comment(
 	commentId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
@@ -56,12 +56,12 @@
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
 	PRIMARY KEY(commentId)
-	};
+	);
 
  -- I need to add a value to helpful vote--boolean? Binary? Tinyint?
  -- By the way, "Helpful Vote," refers to how the reviews can be reviewed as either,
  -- "Helpful," or, "Not Helpful" on amazon. Each user can only vote on a review once.
-	CREATE TABLE helpfulVote{
+	CREATE TABLE helpfulVote(
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
 	UNIQUE(profileId),
@@ -69,10 +69,10 @@
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
 	PRIMARY KEY(profileId, reviewId)
-	};
+	);
 
 
-	CREATE TABLE question{
+	CREATE TABLE question(
 	questionID INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	productId INT UNSIGNED NOT NULL,
@@ -83,9 +83,9 @@
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(questionId)
-	};
+	);
 
-	CREATE TABLE answer{
+	CREATE TABLE answer(
 	answerId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileId INT UNSIGNED NOT NULL,
 	questionId INT UNSIGNED NOT NULL,
@@ -96,5 +96,5 @@
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(questionId) REFERENCES question(questionId),
 	PRIMARY KEY(answerId)
-	};
+	);
 
