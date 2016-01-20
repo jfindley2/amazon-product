@@ -7,21 +7,19 @@
 	<body>
 		<h1>Entities</h1>
 		<p><br/>m profiles give n Reviews.<br/>
-			1 Product receives n Reviews<br/><br/>
+			1 Product receives n Reviews<br/><br/></p>
 
-			1 Review receives m Helpful Votes.<br/>
-			m Profiles give m Helpful Votes.<br/><br/>
+			<p>1 Review receives m Helpful Votes.<br/>
+			m Profiles give m Helpful Votes.<br/><br/></p>
 
-			m Profiles give n Comments.<br/>
-			1 Review receives n Comments.<br/><br/>
+			<p>m Profiles give n Comments.<br/>
+			1 Review receives n Comments.<br/><br/></p>
 
-			m profiles ask n Questions.<br/>
-			1 Product hosts n Questions<br/><br/>
+			<p>m profiles ask n Questions.<br/>
+			1 Product hosts n Questions<br/><br/></p>
 
-			m Profiles respond with n answers.<br/>
-			1 Question receives n answers.<br/><br/>
-
-		</p>
+			<p>m Profiles respond with n answers.<br/>
+			1 Question receives n answers.<br/><br/></p>
 		<h1>Persona</h1>
 		<p><br/>Penelope Lane, age 17. A senior high school student at the Zann School of Music who is currently planning on attending Miskatonic U. She is ambitious and, perhaps, studies too hard, but she does find time to socialise. One friend and three classmates with whom she has a friendly albeit distant acquaintanceship are planning on going to the same school. She is moderately exasperated with her parents who, she thinks, are trying too hard to help and being helicopter parents. She is proud of her skill with the violin. She has no siblings, though always wanted one.<br/>
 		</p>
