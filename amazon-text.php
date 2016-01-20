@@ -36,6 +36,6 @@
 			Penelope focuses on the reviews, focusing on those that have high Helpful votes.<br/>
 
 		</p>
-
+		<img src="amazonpage4.svg">
 	</body>
 </html>
