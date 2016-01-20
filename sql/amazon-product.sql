@@ -14,22 +14,20 @@
 
 	CREATE TABLE product(
 	productId INT UNSIGNED AUTO_INCREMENT NOT NULL,
-	-- I'm not entirely certain as to what the image variable will look like.
-	productImage
+	productImage VARCHAR(255) NOT NULL,
 	productPrice INT UNSIGNED NOT NULL,
-	additionalInfo VARCHAR(256) NOT NULL,
-	description VARCHAR(256) NOT NULL,
-	technicalDetails VARCHAR(256) NOT NULL,
-	productName VARCHAR(256) NOT NULL,
+	additionalInfo VARCHAR(255) NOT NULL,
+	description VARCHAR(255) NOT NULL,
+	technicalDetails VARCHAR(255) NOT NULL,
+	productName VARCHAR(255) NOT NULL,
 	PRIMARY KEY(productId)
 	);
 
 	CREATE TABLE profile(
 	profileID INT UNSIGNED AUTO_INCREMENT NOT NULL,
-	name VARCHAR(20) NOT NULL,
+	name VARCHAR(32) NOT NULL,
 	location VARCHAR(20),
 	blurb VARCHAR(20),
-	UNIQUE(name),
 	PRIMARY KEY(profileId)
 	);
 
@@ -42,7 +40,7 @@
 	-- The Star Vote will be from 1 to 5, with half increments.
 	starVote TINYINT UNSIGNED NOT NULL,
 	INDEX(profileId),
-	UNIQUE(productId),
+	INDEX(productId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(reviewId)
@@ -57,7 +55,7 @@
 	commentText VARCHAR(256) NOT NULL,
 	commentDate TIMESTAMP NOT NULL,
 	INDEX(profileId),
-	UNIQUE(reviewId),
+	INDEX(reviewId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
 	PRIMARY KEY(commentId)
@@ -69,8 +67,8 @@
 	CREATE TABLE helpfulVote(
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
-	UNIQUE(profileId),
-	UNIQUE(reviewId),
+	INDEX(profileId),
+	INDEX(reviewId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
 	PRIMARY KEY(profileId, reviewId)
@@ -84,7 +82,7 @@
 	questionDate TIMESTAMP NOT NULL,
 	questionText VARCHAR(256) NOT NULL,
 	INDEX(profileId),
-	UNIQUE(productId),
+	INDEX(productId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(productId) REFERENCES product(productId),
 	PRIMARY KEY(questionId)
@@ -97,7 +95,7 @@
 	answerDate TIMESTAMP NOT NULL,
 	answerText VARCHAR(256) NOT NULL,
 	INDEX(profileId),
-	UNIQUE(questionId),
+	INDEX(questionId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(questionId) REFERENCES question(questionId),
 	PRIMARY KEY(answerId)
