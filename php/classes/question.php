@@ -180,6 +180,12 @@ class Question {
 		return $this->questionDate;
 	}
 
+	/**
+	 * @param mixed $newQuestionDate questionDate as a DateTime object or string (Or null to load the current time)
+	 * @throws InvalidArgumentException if $newQuestionDate is not a valid object or string
+	 * @throws RangeException if $newQuestionDate is a date that does not exist
+	 * @throws Exception for any other exception
+	 */
 	public function setQuestionDate($newQuestionDate) {
 		//base case: if the date is null, use the current date and time
 		if($newQuestionDate === null) {
