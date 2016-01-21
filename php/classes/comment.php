@@ -36,6 +36,17 @@ class Comment {
 	 */
 	private $commentDate;
 
+	/**
+	 * @param int $newCommentId id of the comment, primary key
+	 * @param int $newProfileId id of the profile that wrote the comment, foreign key
+	 * @param int $newReviewId id of the review the comment is commenting on, foreign key
+	 * @param string $newCommentText text content of the comment
+	 * @param mixed $newCommentDate when the comment was written
+	 * @throws InvalidArgumentException if data types are not valid
+	 * @throws RangeException if data values are out of bounds
+	 * @throws Exception if some other exception is thrown.
+	 */
+
 	public function _constructor($newCommentId, $newProfileId, $newReviewId, $newCommentText, $newCommentDate = null) {
 		try {
 			$this->setCommentId($newCommentId);
