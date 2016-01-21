@@ -48,7 +48,7 @@ class Answer {
 	 * @throws RangeException if data values are out of bounds
 	 * @throws Exception if some other exception is thrown
 	 */
-	public function _constructor($newAnswerId, $newProfileId, $newQuestionId, $newAnswerText, $newAnswerDate = null) {
+	public function __constructor($newAnswerId, $newProfileId, $newQuestionId, $newAnswerText, $newAnswerDate = null) {
 		try {
 			$this->setAnswerId($newAnswerId);
 			$this->setProfileId($newProfileId);

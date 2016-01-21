@@ -53,7 +53,7 @@ class Review {
 	 * @throws Exception if some other exception is thrown
 	 */
 
-	public function _construct($newReviewId, $newProductId, $newProfileId, $newReviewText, $newStarVote, $newReviewDate = null) {
+	public function __construct($newReviewId, $newProductId, $newProfileId, $newReviewText, $newStarVote, $newReviewDate = null) {
 		try {
 			$this->setReviewId($newReviewId);
 			$this->setProductId($newProductId);

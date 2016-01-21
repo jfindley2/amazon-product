@@ -40,7 +40,7 @@ class Profile {
 	 * @throws Exception if some other exception is thrown.
 	 */
 
-	public function _construct($newProfileId, $newName, $newLocation, $newBlurb) {
+	public function __construct($newProfileId, $newName, $newLocation, $newBlurb) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setName($newName);

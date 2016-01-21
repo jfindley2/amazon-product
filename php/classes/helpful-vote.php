@@ -31,7 +31,7 @@ class HelpfulVote {
 	 * @param bool $newTheVote
 	 * @throws Exception
 	 */
-	public function _construct($newProfileId, $newReviewId, $newTheVote) {
+	public function __construct($newProfileId, $newReviewId, $newTheVote) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setReviewId($newReviewId);

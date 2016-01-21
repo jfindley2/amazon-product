@@ -47,7 +47,7 @@ class Comment {
 	 * @throws Exception if some other exception is thrown.
 	 */
 
-	public function _constructor($newCommentId, $newProfileId, $newReviewId, $newCommentText, $newCommentDate = null) {
+	public function __constructor($newCommentId, $newProfileId, $newReviewId, $newCommentText, $newCommentDate = null) {
 		try {
 			$this->setCommentId($newCommentId);
 			$this->setProfileId($newProfileId);

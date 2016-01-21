@@ -56,7 +56,7 @@ class Product {
 	 * @throws RangeException if data values are out of bounds
 	 * @throws Exception if some other exception is thrown.
 	 */
-	public function _construct($newProductId, $newProductImage, $newProductPrice, $newAdditionalInfo, $newDescription, $newTechicalDetails, $newProductName) {
+	public function __construct($newProductId, $newProductImage, $newProductPrice, $newAdditionalInfo, $newDescription, $newTechicalDetails, $newProductName) {
 		try {
 			$this->setProductId($newProductId);
 			$this->setProductImage($newProductImage);
