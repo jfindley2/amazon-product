@@ -29,6 +29,34 @@ class Profile {
 	private $blurb;
 
 	/**
+	 * @param $newProfileId
+	 * @param $newName
+	 * @param $newLocation
+	 * @param $newBlurb
+	 * @throws InvalidArgumentException if data types are not valid
+	 * @throws RangeException if data values are out of bounds
+	 * @throws Exception if some other exception is thrown.
+	 */
+
+	public function _construct($newProfileId, $newName, $newLocation, $newBlurb) {
+		try {
+			$this->setProfileId($newProfileId);
+			$this->setName($newName);
+			$this->setLocation($newLocation);
+			$this->setBlurb($newBlurb);
+		} catch(InvalidArgumentException $invalidArgument) {
+			//rethrow the exception to the caller
+			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(RangeException $range) {
+			//Rethrow the exception to the caller
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			//Rethrow generic exception. Should not happen here.
+			throw(new Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+
+	/**
 	 * Accessor method for $profileId
 	 * @return int value of $profileId
 	 */
