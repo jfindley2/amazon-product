@@ -67,6 +67,7 @@
 	CREATE TABLE helpfulVote(
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
+	theVote BIT NOT NULL,
 	INDEX(profileId),
 	INDEX(reviewId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
