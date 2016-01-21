@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/php/date-utils.php");
+require_once(dirname(__DIR__) . "/date-utils.php");
 
 /**
  * Class Review

@@ -1,7 +1,9 @@
 <?php
 
 /**
- * None of this is my code. I found it at https://bootcamp-coders.cnm.edu/class-materials/object-oriented/object-oriented-php.php
+ * None of this is my code.
+ * I found it at https://bootcamp-coders.cnm.edu/class-materials/object-oriented/object-oriented-php.php
+ * With permission, of course.
  */
 /**
  * custom filter for mySQL style dates
