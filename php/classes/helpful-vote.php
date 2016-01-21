@@ -112,17 +112,11 @@ class HelpfulVote {
 	 * @param bool $newTheVote
 	 */
 	public function setTheVote($newTheVote) {
-		//If no vote is given,
 		$newTheVote = filter_var($newTheVote, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
 		//if filter_var rejects the variable, throw an exception
-		if($newTheVote === false) {
-			throw(new InvalidArgumentException("The vote given is not a proper int"));
+		if($newTheVote === null) {
+			throw(new InvalidArgumentException("The vote given is not applicable"));
 		}
-		//If $newTheVote is out of range, throw an exception.
-		if(!($newTheVote == 0 || $newTheVote == 1)) {
-			throw(new RangeException("The vote has to be 1 or 0!"));
-		}
-
 		$this->theVote = $newTheVote;
 	}
 }
