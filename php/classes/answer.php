@@ -155,9 +155,29 @@ class Answer {
 	}
 
 	/**
+	 * Mutator method for $answerDate
+	 *
 	 * @param mixed $newAnswerDate
+	 * @throws InvalidArgumentException if $newAnswerDate is not a valid object or string
+	 * @throws RangeException if $newAnswerDate is a date that does not exist
+	 * @throws Exception for any other exception
 	 */
 	public function setAnswerDate($newAnswerDate) {
+		//base case: if the date is null, use the current date and time
+		if($newAnswerDate === null) {
+			$this->answerDate = new DateTime();
+			return;
+		}
+		//store the answer date
+		try {
+			$newAnswerDate = validateDate($newAnswerDate);
+		} catch(InvalidArgumentException $invalidArgument) {
+			throw (new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(RangeException $range) {
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			throw(new Exception($exception->getMessage(), 0, $exception));
+		}
 		$this->answerDate = $newAnswerDate;
 	}
 }
