@@ -64,7 +64,7 @@ class Product {
 		if($newProductId === false) {
 			throw(new UnexpectedValueException("Product Id is not a proper int"));
 		}
-		//If $newProductId is out of range, throw an exception.
+		//If $newProductId is not positive, throw an exception.
 		if($newProductId <= 0) {
 			throw(new RangeException("Product ID must be positive"));
 		}
