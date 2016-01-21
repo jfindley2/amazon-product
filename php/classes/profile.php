@@ -39,14 +39,14 @@ class Profile {
 	 * mutator method for $profileId
 	 *
 	 * @param int $newProfileId
-	 * @throws UnexpectedValueException if $newProfileId is not a proper int
+	 * @throws InvalidArgumentException if $newProfileId is not a proper int
 	 * @throws RangeException if $newProfileId is not positive
 	 */
 	public function setProfileId($newProfileId) {
 		$newProfileId = filter_var($newProfileId, FILTER_VALIDATE_INT);
 		//if filter_var rejects the variable, throw an exception
 		if($newProfileId === false) {
-			throw(new UnexpectedValueException("Profile Id is not a proper int"));
+			throw(new InvalidArgumentException("Profile Id is not a proper int"));
 		}
 		//If $newProfileId is out of range, throw an exception.
 		if($newProfileId <= 0) {
@@ -66,14 +66,14 @@ class Profile {
 	 * Mutator method for $name
 	 *
 	 * @param string $newName
-	 * @throws UnexpectedValueException if $newName is not a proper string
+	 * @throws InvalidArgumentException if $newName is not a proper string
 	 */
 	public function setName($newName) {
 		//Verify the data is of the right type
 		$newName = trim($newName);
 		$newName = filter_var($newName, FILTER_SANITIZE_STRING);
 		if (null($newName) === true) {
-			throw(new UnexpectedValueException("Content is empty or insecure"));
+			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->name = $newName;
 	}
@@ -88,14 +88,14 @@ class Profile {
 	 * Mutator method for $location
 	 *
 	 * @param string $newLocation
-	 * @throws UnexpectedValueException if $newLocation is not a proper string
+	 * @throws InvalidArgumentException if $newLocation is not a proper string
 	 */
 	public function setLocation($newLocation) {
 		//Verify the data is of the right type
 		$newLocation = trim($newLocation);
 		$newLocation = filter_var($newLocation, FILTER_SANITIZE_STRING);
 		if (null($newLocation) === true) {
-			throw(new UnexpectedValueException("Content is empty or insecure"));
+			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->location = $newLocation;
 	}
@@ -111,14 +111,14 @@ class Profile {
 	 * Mutator method for $blurb
 	 *
 	 * @param string $newBlurb
-	 * @throws UnexpectedValueException if $newBlurb is not a proper string
+	 * @throws InvalidArgumentException if $newBlurb is not a proper string
 	 */
 	public function setBlurb($newBlurb) {
 		//Verify the data is of the right type
 		$newBlurb = trim($newBlurb);
 		$newBlurb = filter_var($newBlurb, FILTER_SANITIZE_STRING);
 		if (null($newBlurb) === true) {
-			throw(new UnexpectedValueException("Content is empty or insecure"));
+			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->blurb = $newBlurb;
 	}
