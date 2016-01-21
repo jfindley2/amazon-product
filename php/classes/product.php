@@ -56,7 +56,7 @@ class Product {
 	 *
 	 * @param int $newProductId
 	 * @throws UnexpectedValueException if $newProductId is not a proper int
-	 * @throws RangeException if newProductId is not positive
+	 * @throws RangeException if $newProductId is not positive
 	 */
 	public function setProductId($newProductId) {
 		$newProductId = filter_var($newProductId, FILTER_VALIDATE_INT);
