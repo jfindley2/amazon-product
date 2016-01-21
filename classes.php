@@ -46,13 +46,7 @@ class Hypospray {
 }
 
 
-class Profile {
-	/**
-	 * id for Profile; this is the primary key
-	 * @var int $profileId
-	 */
-	private $profileId;
-}
+
 
 class Review {
 	/**
