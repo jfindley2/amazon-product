@@ -169,8 +169,8 @@ class Review {
 	public function setReviewText($newReviewText) {
 		//Verify the data is of the right type
 		$newReviewText = trim($newReviewText);
-		$newReviewText = filter_vat($newReviewText, FILTER_SANITIZE_STRING);
-		if(null($newReviewText) === true) {
+		$newReviewText = filter_var($newReviewText, FILTER_SANITIZE_STRING);
+		if(empty($newReviewText) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->reviewText = $newReviewText;

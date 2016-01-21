@@ -121,7 +121,7 @@ class Product {
 		//Verify the data is of the right type
 		$newProductImage = trim($newProductImage);
 		$newProductImage = filter_var($newProductImage, FILTER_SANITIZE_STRING);
-		if (null($newProductImage) === true) {
+		if (empty($newProductImage) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->productImage = $newProductImage;
@@ -173,7 +173,7 @@ class Product {
 		//Verify the data is of the right type
 		$newAdditionalInfo = trim($newAdditionalInfo);
 		$newAdditionalInfo = filter_var($newAdditionalInfo, FILTER_SANITIZE_STRING);
-		if (null($newAdditionalInfo) === true) {
+		if (empty($newAdditionalInfo) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->additionalInfo = $newAdditionalInfo;
@@ -195,7 +195,7 @@ class Product {
 		//Verify the data is of the right type
 		$newDescription = trim($newDescription);
 		$newDescription = filter_var($newDescription, FILTER_SANITIZE_STRING);
-		if (null($newDescription) === true) {
+		if (empty($newDescription) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->description = $newDescription;
@@ -217,7 +217,7 @@ class Product {
 		//Verify the data is of the right type
 		$newTechnicalDetails = trim($newTechnicalDetails);
 		$newTechnicalDetails = filter_var($newTechnicalDetails, FILTER_SANITIZE_STRING);
-		if (null($newTechnicalDetails) === true) {
+		if (empty($newTechnicalDetails) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->technicalDetails = $newTechnicalDetails;
@@ -239,7 +239,7 @@ class Product {
 		//Verify the data is of the right type
 		$newProductName = trim($newProductName);
 		$newProductName = filter_var($newProductName, FILTER_SANITIZE_STRING);
-		if (null($newProductName) === true) {
+		if (empty($newProductName) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->productName = $newProductName;

@@ -102,7 +102,7 @@ class Profile {
 		//Verify the data is of the right type
 		$newName = trim($newName);
 		$newName = filter_var($newName, FILTER_SANITIZE_STRING);
-		if (null($newName) === true) {
+		if (empty($newName) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->name = $newName;
@@ -124,7 +124,7 @@ class Profile {
 		//Verify the data is of the right type
 		$newLocation = trim($newLocation);
 		$newLocation = filter_var($newLocation, FILTER_SANITIZE_STRING);
-		if (null($newLocation) === true) {
+		if (empty($newLocation) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->location = $newLocation;
@@ -147,7 +147,7 @@ class Profile {
 		//Verify the data is of the right type
 		$newBlurb = trim($newBlurb);
 		$newBlurb = filter_var($newBlurb, FILTER_SANITIZE_STRING);
-		if (null($newBlurb) === true) {
+		if (empty($newBlurb) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
 		$this->blurb = $newBlurb;
