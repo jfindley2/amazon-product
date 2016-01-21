@@ -60,13 +60,15 @@ class Product {
 	 */
 	public function setProductId($newProductId) {
 		$newProductId = filter_var($newProductId, FILTER_VALIDATE_INT);
+		//if filter_var rejects the variable, throw an exception
 		if($newProductId === false) {
 			throw(new UnexpectedValueException("Product Id is not a proper int"));
 		}
+		//If $newProductId is out of range, throw an exception.
 		if($newProductId <= 0) {
 			throw(new RangeException("Product ID must be positive"));
 		}
-		$this->productId = $newProductId;
+		$this->productId = intval($newProductId);
 	}
 	/**
 	 * accessor method for productImage
@@ -82,6 +84,7 @@ class Product {
 	 * @throws UnexpectedValueException if newProductImage is not valid
 	 */
 	public function setProductImage($newProductImage) {
+		//Verify the data is of the right type
 		$newProductImage = trim($newProductImage);
 		$newProductImage = filter_var($newProductImage, FILTER_SANITIZE_STRING);
 		if (null($newProductImage) === true) {
@@ -105,17 +108,19 @@ class Product {
 	 *
 	 * @param int $newProductPrice
 	 * @throws UnexpectedValueException if $newProductPrice is not a proper int
-	 * @throws RangeException If Product Price is negative
+	 * @throws RangeException If Product Price is not positive
 	 */
 	public function setProductPrice($newProductPrice) {
 		$newProductPrice = filter_var($newProductPrice, FILTER_VALIDATE_INT);
+		//if filter_var rejects the variable, throw an exception
 		if($newProductPrice === false) {
 			throw(new UnexpectedValueException("Product Price is not a proper int"));
 		}
+		//if $newProductPrice is out of range, throw an exception
 		if($newProductPrice <= 0) {
 			throw(new RangeException("Price must be positive"));
 		}
-		$this->productPrice = $newProductPrice;
+		$this->productPrice = intval($newProductPrice);
 	}
 	/**
 	 * accessor method for additionalInfo
@@ -131,6 +136,7 @@ class Product {
 	 * @throws UnexpectedValueException if newAdditionalInfo is not valid
 	 */
 	public function setAdditionalInfo($newAdditionalInfo) {
+		//Verify the data is of the right type
 		$newAdditionalInfo = trim($newAdditionalInfo);
 		$newAdditionalInfo = filter_var($newAdditionalInfo, FILTER_SANITIZE_STRING);
 		if (null($newAdditionalInfo) === true) {
@@ -152,6 +158,7 @@ class Product {
 	 * @throws UnexpectedValueException if newDescription is not valid
 	 */
 	public function setDescription($newDescription) {
+		//Verify the data is of the right type
 		$newDescription = trim($newDescription);
 		$newDescription = filter_var($newDescription, FILTER_SANITIZE_STRING);
 		if (null($newDescription) === true) {
@@ -173,6 +180,7 @@ class Product {
 	 * @throws UnexpectedValueException if $newTechnicalDetails is not valid
 	 */
 	public function setTechnicalDetails($newTechnicalDetails) {
+		//Verify the data is of the right type
 		$newTechnicalDetails = trim($newTechnicalDetails);
 		$newTechnicalDetails = filter_var($newTechnicalDetails, FILTER_SANITIZE_STRING);
 		if (null($newTechnicalDetails) === true) {
@@ -194,6 +202,7 @@ class Product {
 	 * @throws UnexpectedValueException if $newProductName is not valid
 	 */
 	public function setProductName($newProductName) {
+		//Verify the data is of the right type
 		$newProductName = trim($newProductName);
 		$newProductName = filter_var($newProductName, FILTER_SANITIZE_STRING);
 		if (null($newProductName) === true) {
