@@ -42,7 +42,7 @@ class Review {
 	/**
 	 * constructor for this Review
 	 *
-	 * @param int $newReviewId id of the review, primary key
+	 * @param int $newReviewId Id of the review, primary key
 	 * @param int $newProductId The foreign key of the product Id (What the review is a review of)
 	 * @param int $newProfileId The foreign key of the user Id (Who wrote the review)
 	 * @param string $newReviewText What the text in the review is

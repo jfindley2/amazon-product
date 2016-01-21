@@ -31,7 +31,7 @@ class Profile {
 	/**
 	 * constructor for this Profile
 	 *
-	 * @param int $newProfileId id of the profile, primary key
+	 * @param int $newProfileId Id of the profile, primary key
 	 * @param string $newName The user's name
 	 * @param string $newLocation Where the user is from
 	 * @param string $newBlurb What the user has written about themselves

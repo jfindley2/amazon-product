@@ -45,7 +45,7 @@ class Product {
 	/**
 	 * constructor for this Product
 	 *
-	 * @param int $newProductId id of the product, primary key
+	 * @param int $newProductId Id of the product, primary key
 	 * @param string $newProductImage image url of the product
 	 * @param int $newProductPrice the price of the product
 	 * @param string $newAdditionalInfo whatever additional information the product has
@@ -142,7 +142,7 @@ class Product {
 	 *
 	 * @param int $newProductPrice
 	 * @throws InvalidArgumentException if $newProductPrice is not a proper int
-	 * @throws RangeException If Product Price is not positive
+	 * @throws RangeException if $newProductPrice is not positive
 	 */
 	public function setProductPrice($newProductPrice) {
 		$newProductPrice = filter_var($newProductPrice, FILTER_VALIDATE_INT);
