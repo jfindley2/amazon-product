@@ -43,6 +43,40 @@ class Product {
 	private $productName;
 
 	/**
+	 * constructor for this Product
+	 *
+	 * @param int $newProductId id of the product
+	 * @param string $newProductImage image url of the product
+	 * @param int $newProductPrice the price of the product
+	 * @param string $newAdditionalInfo whatever additional information the product has
+	 * @param string $newDescription the description of the product
+	 * @param string $newTechicalDetails the product's technical details
+	 * @param string $newProductName the name of the product
+	 * @throws InvalidArgumentException if data types are not valid
+	 * @throws RangeException if data values are out of bounds
+	 * @throws Exception if some other exception is thrown.
+	 */
+	public function _construct($newProductId, $newProductImage, $newProductPrice, $newAdditionalInfo, $newDescription, $newTechicalDetails, $newProductName) {
+		try {
+			$this->setProductId($newProductId);
+			$this->setProductImage($newProductImage);
+			$this->setProductPrice($newProductPrice);
+			$this->setAdditionalInfo($newAdditionalInfo);
+			$this->setDescription($newDescription);
+			$this->setTechnicalDetails($newTechicalDetails);
+			$this->setProductName($newProductName);
+		} catch(InvalidArgumentException $invalidArgument) {
+			//rethrow the exception to the caller
+			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(RangeException $range) {
+			//Rethrow the exception to the caller
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			//Rethrow generic exception. Should not happen here.
+			throw(new Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+	/**
 	 * accessor method for productId
 	 *
 	 * @return int value of productId
