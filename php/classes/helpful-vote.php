@@ -20,7 +20,7 @@ class HelpfulVote {
 	private $reviewId;
 
 	/**
-	 * The value of the vote, 1 or 0
+	 * The value of the vote, as a bool.
 	 * @var bool $theVote
 	 */
 	private $theVote;
