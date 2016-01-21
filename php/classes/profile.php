@@ -29,10 +29,12 @@ class Profile {
 	private $blurb;
 
 	/**
-	 * @param $newProfileId
-	 * @param $newName
-	 * @param $newLocation
-	 * @param $newBlurb
+	 * constructor for this Profile
+	 *
+	 * @param int $newProfileId id of the profile, primary key
+	 * @param string $newName The user's name
+	 * @param string $newLocation Where the user is from
+	 * @param string $newBlurb What the user has written about themselves
 	 * @throws InvalidArgumentException if data types are not valid
 	 * @throws RangeException if data values are out of bounds
 	 * @throws Exception if some other exception is thrown.

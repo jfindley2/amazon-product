@@ -45,7 +45,7 @@ class Product {
 	/**
 	 * constructor for this Product
 	 *
-	 * @param int $newProductId id of the product
+	 * @param int $newProductId id of the product, primary key
 	 * @param string $newProductImage image url of the product
 	 * @param int $newProductPrice the price of the product
 	 * @param string $newAdditionalInfo whatever additional information the product has

@@ -39,6 +39,40 @@ class Review {
 	private $reviewDate;
 
 	/**
+	 * constructor for this Review
+	 *
+	 * @param int $newReviewId id of the review, primary key
+	 * @param int $newProductId The foreign key of the product Id (What the review is a review of)
+	 * @param int $newProfileId The foreign key of the user Id (Who wrote the review)
+	 * @param string $newReviewText What the text in the review is
+	 * @param int $newStarVote Between 1 and 5 stars, what the review rated the product
+	 * @param mixed $newReviewDate When the review was submitted.
+	 * @throws InvalidArgumentException If the data types are not valid
+	 * @throws RangeException if data values are out of bounds
+	 * @throws Exception if some other exception is thrown
+	 */
+
+	public function _construct($newReviewId, $newProductId, $newProfileId, $newReviewText, $newStarVote, $newReviewDate = null) {
+		try {
+			$this->setReviewId($newReviewId);
+			$this->setProductId($newProductId);
+			$this->setProfileId($newProfileId);
+			$this->setReviewText($newReviewText);
+			$this->setStarVote($newStarVote);
+			$this->setReviewDate($newReviewDate);
+		} catch(InvalidArgumentException $invalidArgument) {
+			//rethrow the exception to the caller
+			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(RangeException $range) {
+			//Rethrow the exception to the caller
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			//Rethrow generic exception.
+			throw(new Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+
+	/**
 	 * accessor method for $reviewId
 	 *
 	 * @return int value of $reviewId
@@ -183,6 +217,7 @@ class Review {
 	 * @param mixed $newReviewDate reviewDate as a DateTime object or string (Or null to load the current time)
 	 * @throws InvalidArgumentException if $newReviewDate is not a valid object or string
 	 * @throws RangeException if $newReviewDate is a date that does not exist
+	 * @throws Exception for any other exception
 	 */
 	public function setReviewDate($newReviewDate) {
 		//base case: if the date is null, use the current date and time
