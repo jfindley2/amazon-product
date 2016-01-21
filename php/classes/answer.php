@@ -39,6 +39,35 @@ class Answer {
 	private $answerDate;
 
 	/**
+	 * @param int $newAnswerId Id of the answer, the primary key
+	 * @param int $newProfileId The foreign key of the user Id (Who wrote the answer)
+	 * @param int $newQuestionId The foreign key of the question that the answer was a response to
+	 * @param string $newAnswerText
+	 * @param mixed $newAnswerDate
+	 * @throws InvalidArgumentException If the data types are not valid
+	 * @throws RangeException if data values are out of bounds
+	 * @throws Exception if some other exception is thrown
+	 */
+	public function _constructor($newAnswerId, $newProfileId, $newQuestionId, $newAnswerText, $newAnswerDate = null) {
+		try {
+			$this->setAnswerId($newAnswerId);
+			$this->setProfileId($newProfileId);
+			$this->setAnswerId($newAnswerId);
+			$this->setAnswerText($newAnswerText);
+			$this->setAnswerDate($newAnswerDate);
+		} catch(InvalidArgumentException $invalidArgument) {
+			//rethrow the exception to the caller
+			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(RangeException $range) {
+			//Rethrow the exception to the caller
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			//Rethrow generic exception.
+			throw(new Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+
+	/**
 	 * Accessor method for $answerId
 	 * @return int value of $answerId
 	 */
