@@ -95,6 +95,7 @@ class Review {
 	public function setReviewId($newReviewId) {
 
 		if($newReviewId === null) {
+			//If the Primary Key Id is null, it is a new object without an assigned Id
 			$this->reviewId = null;
 			return;
 		}

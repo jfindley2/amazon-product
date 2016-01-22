@@ -97,6 +97,7 @@ class Product {
 	 * @throws RangeException if $newProductId is not positive
 	 */
 	public function setProductId($newProductId) {
+		//If the Primary Key Id is null, it is a new object without an assigned Id
 		if($newProductId === null) {
 			$this->productId = null;
 			return;

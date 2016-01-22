@@ -76,6 +76,7 @@ class Profile {
 	 * @throws RangeException if $newProfileId is not positive
 	 */
 	public function setProfileId($newProfileId) {
+		//If the Primary Key Id is null, it is a new object without an assigned Id
 		if($newProfileId === null) {
 			$this->profileId = null;
 			return;
