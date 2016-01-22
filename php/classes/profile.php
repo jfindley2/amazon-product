@@ -16,9 +16,9 @@ class Profile {
 
 	/**
 	 * The user's name
-	 * @var string $name
+	 * @var string $profileName
 	 */
-	private $name;
+	private $profileName;
 	/**
 	 * The user's location
 	 * @var string $location
@@ -34,7 +34,7 @@ class Profile {
 	 * constructor for this Profile
 	 *
 	 * @param int $newProfileId Id of the profile, primary key
-	 * @param string $newName The user's name
+	 * @param string $newProfileName The user's name
 	 * @param string $newLocation Where the user is from
 	 * @param string $newBlurb What the user has written about themselves
 	 * @throws InvalidArgumentException if data types are not valid
@@ -42,10 +42,10 @@ class Profile {
 	 * @throws Exception if some other exception is thrown.
 	 */
 
-	public function __construct($newProfileId, $newName, $newLocation, $newBlurb) {
+	public function __construct($newProfileId, $newProfileName, $newLocation, $newBlurb) {
 		try {
 			$this->setProfileId($newProfileId);
-			$this->setName($newName);
+			$this->setProfileName($newProfileName);
 			$this->setLocation($newLocation);
 			$this->setBlurb($newBlurb);
 		} catch(InvalidArgumentException $invalidArgument) {
@@ -96,27 +96,27 @@ class Profile {
 
 
 	/**
-	 * Accessor method for $name
-	 * @return string value of $name
+	 * Accessor method for $profileName
+	 * @return string value of $profileName
 	 */
-	public function getName() {
-		return $this->name;
+	public function getProfileName() {
+		return $this->profileName;
 	}
 
 	/**
-	 * Mutator method for $name
+	 * Mutator method for $profileName
 	 *
-	 * @param string $newName
-	 * @throws InvalidArgumentException if $newName is not a proper string
+	 * @param string $newProfileName
+	 * @throws InvalidArgumentException if $newProfileName is not a proper string
 	 */
-	public function setName($newName) {
+	public function setProfileName($newProfileName) {
 		//Verify the data is of the right type
-		$newName = trim($newName);
-		$newName = filter_var($newName, FILTER_SANITIZE_STRING);
-		if (empty($newName) === true) {
+		$newProfileName = trim($newProfileName);
+		$newProfileName = filter_var($newProfileName, FILTER_SANITIZE_STRING);
+		if (empty($newProfileName) === true) {
 			throw(new InvalidArgumentException("Content is empty or insecure"));
 		}
-		$this->name = $newName;
+		$this->profileName = $newProfileName;
 	}
 
 
@@ -175,6 +175,66 @@ class Profile {
 	 * @return string
 	 */
 	public function __toString() {
-		return "The username of this user is " . $this->getName() . ". They are located at " . $this->getLocation() . ". This is what they have to say about themselves: " . $this->getBlurb();
+		return "The username of this user is " . $this->getProfileName() . ". They are located at " . $this->getLocation() . ". This is what they have to say about themselves: " . $this->getBlurb();
+	}
+
+	/**
+	 * Inserts this Profile into mySQL
+	 *
+	 * @param PDO $pdo PDO connection Object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function insert(PDO $pdo) {
+		//Enforce that the profileId is null (Id est, don't insert a profile that already exists)
+		if($this->profileId !== null) {
+			throw(new PDOException("Not a new profile"));
+		}
+
+		//create query template
+		$query = "INSERT INTO product(profileName, location, blurb) VALUES(:profileName, :location, :blurb)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$parameters = array("profileName" => $this->profileName, "location" => $this->location, "blurb" => $this->blurb);
+		$statement->execute($parameters);
+
+		//update the null profileId with what mySWL just gave us
+		$this->profileId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Profile from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function delete(PDO $pdo) {
+		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
+		if($this->profileId === null) {
+			throw(new PDOException("Unable to delete a profile that doesn't exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holder in the template
+		$parameters = array("profileId" => $this->profileId);
+		$statement->execute($parameters);
+	}
+
+	public function update(PDO $pdo) {
+		//Enforce that the primary key is not null. You can't update something that does not exist
+		if($this->profileId === null) {
+			throw(new PDOException("Unable to update a profile that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE profile SET profileName = :profileName, location = :location, blurb = :blurb WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$parameters = array("profileName" => $this->profileName, "location" => $this->location, "blurb" => $this->blurb);
+		$statement->execute($parameters);
 	}
 }

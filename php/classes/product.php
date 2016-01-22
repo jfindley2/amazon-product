@@ -304,7 +304,7 @@ class Product {
 	}
 
 	/**
-	 * deletes this Tweet from mySQL
+	 * deletes this Product from mySQL
 	 *
 	 * @param PDO $pdo PDO connection object
 	 * @throws PDOException when mySQL related errors occur
