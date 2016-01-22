@@ -66,8 +66,9 @@ class Question {
 			//Rethrow generic exception.
 			throw(new Exception($exception->getMessage(), 0, $exception));
 		}
-
 	}
+
+
 	/**
 	 * Accessor Method for $questionId
 	 * @return int value of $questionId
@@ -101,6 +102,7 @@ class Question {
 		$this->questionId = $newQuestionId;
 	}
 
+
 	/**
 	 * accessor method for productId
 	 *
@@ -129,6 +131,8 @@ class Question {
 		}
 		$this->productId = intval($newProductId);
 	}
+
+
 	/**
 	 * Accessor method for $profileId
 	 * @return int value of $profileId
@@ -136,6 +140,7 @@ class Question {
 	public function getProfileId() {
 		return $this->profileId;
 	}
+
 	/**
 	 * mutator method for $profileId
 	 *
@@ -155,6 +160,8 @@ class Question {
 		}
 		$this->profileId = $newProfileId;
 	}
+
+
 	/**
 	 * Accessor method for $questionText
 	 * @return string value of $questionText
@@ -164,7 +171,7 @@ class Question {
 	}
 
 	/**
-	 * mutator method for $questionText
+	 * Mutator method for $questionText
 	 *
 	 * @param string $newQuestionText
 	 * @throws InvalidArgumentException if $newQuestionText is not a valid string
@@ -179,6 +186,7 @@ class Question {
 		$this->questionText = $newQuestionText;
 	}
 
+
 	/**
 	 * Accessor method for $questionDate
 	 * @return DateTime value of question date
@@ -187,7 +195,10 @@ class Question {
 		return $this->questionDate;
 	}
 
+
 	/**
+	 * Mutator method for $questionDate
+	 *
 	 * @param mixed $newQuestionDate questionDate as a DateTime object or string (Or null to load the current time)
 	 * @throws InvalidArgumentException if $newQuestionDate is not a valid object or string
 	 * @throws RangeException if $newQuestionDate is a date that does not exist
@@ -211,6 +222,8 @@ class Question {
 		}
 		$this->questionDate = $newQuestionDate;
 	}
+
+
 	/**
 	 * This is the toString method of the class. Currently it displays the text of the question.
 	 * In the future I will attempt to include the date the question was asked, who asked the question, and what product the question was about.

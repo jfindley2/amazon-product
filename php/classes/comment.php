@@ -66,9 +66,8 @@ class Comment {
 			//Rethrow generic exception. Should not happen here.
 			throw(new Exception($exception->getMessage(), 0, $exception));
 		}
-
-
 	}
+
 
 	/**
 	 * Accessor method for $commentId
@@ -102,6 +101,8 @@ class Comment {
 		}
 		$this->commentId = $newCommentId;
 	}
+
+
 	/**
 	 * Accessor method for $profileId
 	 * @return int value of $profileId
@@ -109,6 +110,7 @@ class Comment {
 	public function getProfileId() {
 		return $this->profileId;
 	}
+
 	/**
 	 * mutator method for $profileId
 	 *
@@ -128,6 +130,8 @@ class Comment {
 		}
 		$this->profileId = $newProfileId;
 	}
+
+
 	/**
 	 * accessor method for $reviewId
 	 *
@@ -136,6 +140,7 @@ class Comment {
 	public function getReviewId() {
 		return $this->reviewId;
 	}
+
 	/**
 	 * Mutator method for $reviewId
 	 *
@@ -155,6 +160,7 @@ class Comment {
 		}
 		$this->reviewId = intval($newReviewId);
 	}
+
 
 	/**
 	 * Accessor method for $commentText
@@ -180,6 +186,7 @@ class Comment {
 		$this->commentText = $newCommentText;
 	}
 
+
 	/**
 	 * accessor method for $commentDate
 	 *
@@ -188,6 +195,7 @@ class Comment {
 	public function getCommentDate() {
 		return $this->commentDate;
 	}
+
 	/**
 	 * mutator method for $commentDate
 	 *
@@ -214,6 +222,8 @@ class Comment {
 		}
 		$this->commentDate = $newCommentDate;
 	}
+
+
 	/**
 	 * This is the toString method of the class. Currently it displays the text of the comment.
 	 * In the future I will include the date the comment was given, the name of the user who wrote the comment, the name of the user who wrote the review, and the text of the review.

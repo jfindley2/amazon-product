@@ -75,6 +75,7 @@ class Review {
 		}
 	}
 
+
 	/**
 	 * accessor method for $reviewId
 	 *
@@ -83,6 +84,7 @@ class Review {
 	public function getReviewId() {
 		return $this->reviewId;
 	}
+
 	/**
 	 * Mutator method for $reviewId
 	 *
@@ -108,6 +110,8 @@ class Review {
 		}
 		$this->reviewId = intval($newReviewId);
 	}
+
+
 	/**
 	 * accessor method for productId
 	 *
@@ -136,6 +140,8 @@ class Review {
 		}
 		$this->productId = intval($newProductId);
 	}
+
+
 	/**
 	 * Accessor method for $profileId
 	 * @return int value of $profileId
@@ -143,6 +149,7 @@ class Review {
 	public function getProfileId() {
 		return $this->profileId;
 	}
+
 	/**
 	 * mutator method for $profileId
 	 *
@@ -162,6 +169,8 @@ class Review {
 		}
 		$this->profileId = $newProfileId;
 	}
+
+
 	/**
 	 * Accessor method for $reviewText
 	 * @return string value of $reviewText
@@ -169,6 +178,7 @@ class Review {
 	public function getReviewText() {
 		return $this->reviewText;
 	}
+
 	/**
 	 * Mutator method for $reviewText
 	 *
@@ -185,6 +195,7 @@ class Review {
 		$this->reviewText = $newReviewText;
 	}
 
+
 	/**
 	 * accessor method for $starVote
 	 *
@@ -193,6 +204,7 @@ class Review {
 	public function getStarVote() {
 		return $this->starVote;
 	}
+
 	/**
 	 * mutator method for $starVote
 	 *
@@ -212,6 +224,7 @@ class Review {
 		$this->starVote = $newStarVote;
 	}
 
+
 	/**
 	 * accessor method for $reviewDate
 	 *
@@ -220,6 +233,7 @@ class Review {
 	public function getReviewDate() {
 		return $this->reviewDate;
 	}
+
 	/**
 	 * mutator method for $reviewDate
 	 *
@@ -246,6 +260,8 @@ class Review {
 		}
 		$this->reviewDate = $newReviewDate;
 	}
+
+
 	/**
 	 * This is the toString method of the class. Currently it displays the text of the review.
 	 * In the future it will include the date the review was given, the name of the user who wrote the review, and the name of the product the review was about.

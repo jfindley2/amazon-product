@@ -69,6 +69,7 @@ class Answer {
 		}
 	}
 
+
 	/**
 	 * Accessor method for $answerId
 	 * @return int value of $answerId
@@ -102,6 +103,7 @@ class Answer {
 		$this->answerId = $newAnswerId;
 	}
 
+
 	/**
 	 * Accessor method for $profileId
 	 * @return int value of $profileId
@@ -129,6 +131,7 @@ class Answer {
 		}
 		$this->profileId = $newProfileId;
 	}
+
 
 	/**
 	 * Accessor Method for $questionId
@@ -158,6 +161,7 @@ class Answer {
 		$this->questionId = $newQuestionId;
 	}
 
+
 	/**
 	 * Accessor Method for $answerText
 	 * @return string value for $answerText
@@ -181,6 +185,7 @@ class Answer {
 		}
 		$this->answerText = $newAnswerText;
 	}
+
 
 	/**
 	 * Accessor Method for $answerDate
@@ -216,6 +221,8 @@ class Answer {
 		}
 		$this->answerDate = $newAnswerDate;
 	}
+
+
 	/**
 	 * This is the toString method of the class. Currently it displays the text of the answer.
 	 * In the future I will include the date the answer was given, the name of the user who answered the question, the name of the person who asked the question, and the text of the question itself.

@@ -46,6 +46,8 @@ class HelpfulVote {
 			throw(new Exception($exception->getMessage(), 0, $exception));
 		}
 	}
+
+
 	/**
 	 * Accessor method for $profileId
 	 * @return int value of $profileId
@@ -53,6 +55,7 @@ class HelpfulVote {
 	public function getProfileId() {
 		return $this->profileId;
 	}
+
 	/**
 	 * mutator method for $profileId
 	 *
@@ -72,6 +75,8 @@ class HelpfulVote {
 		}
 		$this->profileId = $newProfileId;
 	}
+
+
 	/**
 	 * Accessor method for $reviewId
 	 *
@@ -80,6 +85,7 @@ class HelpfulVote {
 	public function getReviewId() {
 		return $this->reviewId;
 	}
+
 	/**
 	 * Mutator method for $reviewId
 	 *
@@ -99,6 +105,7 @@ class HelpfulVote {
 		}
 		$this->reviewId = intval($newReviewId);
 	}
+
 
 	/**
 	 * Accessor method for $theVote
@@ -121,6 +128,8 @@ class HelpfulVote {
 		}
 		$this->theVote = $newTheVote;
 	}
+
+
 	/**
 	 * This is the toString method of the class. Currently it displays whether the vote was helpful or not helpful.
 	 * In the future it will contain the name of the voter and the name of the person who wrote the review.

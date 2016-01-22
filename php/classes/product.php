@@ -78,6 +78,8 @@ class Product {
 			throw(new Exception($exception->getMessage(), 0, $exception));
 		}
 	}
+
+
 	/**
 	 * accessor method for productId
 	 *
@@ -95,12 +97,10 @@ class Product {
 	 * @throws RangeException if $newProductId is not positive
 	 */
 	public function setProductId($newProductId) {
-
 		if($newProductId === null) {
 			$this->productId = null;
 			return;
 		}
-
 		$newProductId = filter_var($newProductId, FILTER_VALIDATE_INT);
 		//if filter_var rejects the variable, throw an exception
 		if($newProductId === false) {
@@ -113,6 +113,8 @@ class Product {
 		}
 		$this->productId = intval($newProductId);
 	}
+
+
 	/**
 	 * accessor method for productImage
 	 * @return string value of productImage
@@ -120,6 +122,7 @@ class Product {
 	public function getProductImage() {
 		return($this->productImage);
 	}
+
 	/**
 	 * mutator method for productImage
 	 *
@@ -165,6 +168,8 @@ class Product {
 		}
 		$this->productPrice = intval($newProductPrice);
 	}
+
+
 	/**
 	 * accessor method for additionalInfo
 	 * @return string value of additionalInfo
@@ -172,6 +177,7 @@ class Product {
 	public function getAdditionalInfo() {
 		return($this->additionalInfo);
 	}
+
 	/**
 	 * mutator method for additionalInfo
 	 *
@@ -187,6 +193,8 @@ class Product {
 		}
 		$this->additionalInfo = $newAdditionalInfo;
 	}
+
+
 	/**
 	 * accessor method for description
 	 * @return string value of description
@@ -194,6 +202,7 @@ class Product {
 	public function getDescription() {
 		return($this->description);
 	}
+
 	/**
 	 * mutator method for description
 	 *
@@ -209,6 +218,8 @@ class Product {
 		}
 		$this->description = $newDescription;
 	}
+
+
 	/**
 	 * accessor method for technicalDetails
 	 * @return string value of technicalDetails
@@ -216,6 +227,7 @@ class Product {
 	public function getTechnicalDetails() {
 		return($this->technicalDetails);
 	}
+
 	/**
 	 * mutator method for technicalDetails
 	 *
@@ -231,6 +243,8 @@ class Product {
 		}
 		$this->technicalDetails = $newTechnicalDetails;
 	}
+
+
 	/**
 	 * accessor method for productName
 	 * @return string value of productName
@@ -238,6 +252,7 @@ class Product {
 	public function getProductName() {
 		return($this->productName);
 	}
+
 	/**
 	 * mutator method for description
 	 *

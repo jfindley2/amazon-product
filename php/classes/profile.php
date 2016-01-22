@@ -67,6 +67,7 @@ class Profile {
 	public function getProfileId() {
 		return $this->profileId;
 	}
+
 	/**
 	 * mutator method for $profileId
 	 *
@@ -92,6 +93,7 @@ class Profile {
 		$this->profileId = $newProfileId;
 	}
 
+
 	/**
 	 * Accessor method for $name
 	 * @return string value of $name
@@ -99,6 +101,7 @@ class Profile {
 	public function getName() {
 		return $this->name;
 	}
+
 	/**
 	 * Mutator method for $name
 	 *
@@ -114,6 +117,8 @@ class Profile {
 		}
 		$this->name = $newName;
 	}
+
+
 	/**
 	 * Accessor method for $location
 	 * @return string value of $location
@@ -121,6 +126,7 @@ class Profile {
 	public function getLocation() {
 		return $this->location;
 	}
+
 	/**
 	 * Mutator method for $location
 	 *
@@ -137,6 +143,7 @@ class Profile {
 		$this->location = $newLocation;
 	}
 
+
 	/**
 	 * Accessor method for $blurb
 	 * @return string value of $blurb
@@ -144,6 +151,7 @@ class Profile {
 	public function getBlurb() {
 		return $this->blurb;
 	}
+
 	/**
 	 * Mutator method for $blurb
 	 *
@@ -159,6 +167,8 @@ class Profile {
 		}
 		$this->blurb = $newBlurb;
 	}
+
+
 	/**
 	 * This is the toString method of the class. Currently it displays the name of the user, the location of the user, and the user's blurb.
 	 * @return string
