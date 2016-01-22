@@ -121,6 +121,11 @@ class HelpfulVote {
 		}
 		$this->theVote = $newTheVote;
 	}
+	/**
+	 * This is the toString method of the class. Currently it displays whether the vote was helpful or not helpful.
+	 * In the future it will contain the name of the voter and the name of the person who wrote the review.
+	 * @return string
+	 */
 	public function __toString() {
 		return "This was " . $this->getTheVote() === TRUE ? "indeed " : "not " . "voted helpful.";
 	}

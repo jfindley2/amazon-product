@@ -246,7 +246,13 @@ class Product {
 		}
 		$this->productName = $newProductName;
 	}
+
+	/**
+	 * This is the toString method of the class. Currently it displays the name of the product, what it sells for, and the description of the product.
+	 * In the future it will be more accurate in regards to the cost (As in it will take cents into account.
+	 * @return string
+	 */
 	public function __toString() {
-		return "The product is " . $this->getProductName() . ". It sells for $" . $this->getProductPrice() . ".";
+		return "The product is " . $this->getProductName() . ". It sells for $" . $this->getProductPrice() . ". Here is some information about the product: " . $this->getDescription();
 	}
 }

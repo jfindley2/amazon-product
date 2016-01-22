@@ -206,6 +206,11 @@ class Question {
 		}
 		$this->questionDate = $newQuestionDate;
 	}
+	/**
+	 * This is the toString method of the class. Currently it displays the text of the question.
+	 * In the future I will attempt to include the date the question was asked, who asked the question, and what product the question was about.
+	 * @return string
+	 */
 	public function __toString() {
 		return "A question was asked. This is the question: \"" . $this->getQuestionText() . "\"";
 	}

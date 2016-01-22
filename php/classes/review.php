@@ -240,6 +240,11 @@ class Review {
 		}
 		$this->reviewDate = $newReviewDate;
 	}
+	/**
+	 * This is the toString method of the class. Currently it displays the text of the review.
+	 * In the future it will include the date the review was given, the name of the user who wrote the review, and the name of the product the review was about.
+	 * @return string
+	 */
 	public function __toString() {
 		return "A review was given. This is what was said: " . $this->getReviewText();
 	}

@@ -209,6 +209,11 @@ class Comment {
 		}
 		$this->commentDate = $newCommentDate;
 	}
+	/**
+	 * This is the toString method of the class. Currently it displays the text of the comment.
+	 * In the future I will include the date the comment was given, the name of the user who wrote the comment, the name of the user who wrote the review, and the text of the review.
+	 * @return string
+	 */
 	public function __toString() {
 		return "A comment on a review was given. This is what was said: " . $this->getCommentText();
 	}

@@ -211,6 +211,11 @@ class Answer {
 		}
 		$this->answerDate = $newAnswerDate;
 	}
+	/**
+	 * This is the toString method of the class. Currently it displays the text of the answer.
+	 * In the future I will include the date the answer was given, the name of the user who answered the question, the name of the person who asked the question, and the text of the question itself.
+	 * @return string
+	 */
 	public function __toString() {
 		return "A question was answered. This is the answer: \"" . $this->getAnswerText() . "\"";
 	}

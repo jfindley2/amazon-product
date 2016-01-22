@@ -154,7 +154,10 @@ class Profile {
 		}
 		$this->blurb = $newBlurb;
 	}
-
+	/**
+	 * This is the toString method of the class. Currently it displays the name of the user, the location of the user, and the user's blurb.
+	 * @return string
+	 */
 	public function __toString() {
 		return "The username of this user is " . $this->getName() . ". They are located at " . $this->getLocation() . ". This is what they have to say about themselves: " . $this->getBlurb();
 	}
