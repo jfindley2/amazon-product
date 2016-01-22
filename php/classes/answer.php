@@ -229,6 +229,6 @@ class Answer {
 	 * @return string
 	 */
 	public function __toString() {
-		return "A question was answered. This is the answer: \"" . $this->getAnswerText() . "\"";
+		return "A question was answered. This is the answer: " . $this->getAnswerText();
 	}
 }

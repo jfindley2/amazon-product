@@ -230,6 +230,6 @@ class Question {
 	 * @return string
 	 */
 	public function __toString() {
-		return "A question was asked. This is the question: \"" . $this->getQuestionText() . "\"";
+		return "A question was asked. This is the question: " . $this->getQuestionText();
 	}
 }

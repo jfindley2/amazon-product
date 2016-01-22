@@ -255,7 +255,7 @@ class Product {
 	}
 
 	/**
-	 * Mutator method for description
+	 * Mutator method for $productName
 	 *
 	 * @param string $newProductName
 	 * @throws InvalidArgumentException if $newProductName is not valid
@@ -278,4 +278,65 @@ class Product {
 	public function __toString() {
 		return "The product is " . $this->getProductName() . ". It sells for $" . $this->getProductPrice() . ". Here is some information about the product: " . $this->getDescription();
 	}
+
+	/**
+	 * Inserts this Product into mySQL
+	 *
+	 * @param PDO $pdo PDO connection Object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function insert(PDO $pdo) {
+		//Enforce that the productId is null (Id est, don't insert a product that already exists)
+		if($this->productId !== null) {
+			throw(new PDOException("Not a new product"));
+		}
+
+		//create query template
+		$query = "INSERT INTO product(productImage, productPrice, additionalInfo, description, technicalDetails, productName) VALUES(:productImage, :productPrive, :additionalInfo, :description, :technicalDetails, :productName)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$parameters = array("productImage" => $this->productImage, "productPrice" => $this->productPrice, "additionalInfo" => $this->additionalInfo, "description" => $this->description, "technicalDetails" => $this->technicalDetails, "productName" => $this->productName);
+		$statement->execute($parameters);
+
+		//update the null productId with what mySWL just gave us
+		$this->productId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Tweet from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function delete(PDO $pdo) {
+		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
+		if($this->productId === null) {
+			throw(new PDOException("Unable to delete something that doesn't exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM product WHERE productId = :productId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holder in the template
+		$parameters = array("productId" => $this->productId);
+		$statement->execute($parameters);
+	}
+
+	public function update(PDO $pdo) {
+		//Enforce that the primary key is not null. You can't update something that does not exist
+		if($this->productId === null) {
+			throw(new PDOException("Unable to update something that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE product SET productImage = :productImage, productPrice = :productPrice, additionalInfo = :additionalInfo, description = :description, technicalDetails = :technicalDetails, productName = :productName WHERE productId = :productId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$parameters = array("productImage" => $this->productImage, "productPrice" => $this->productPrice, "additionalInfo" => $this->additionalInfo, "description" => $this->description, "technicalDetails" => $this->technicalDetails, "productName" => $this->productName);
+		$statement->execute($parameters);
+	}
+
 }
