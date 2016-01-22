@@ -299,7 +299,7 @@ class Product {
 		$parameters = array("productImage" => $this->productImage, "productPrice" => $this->productPrice, "additionalInfo" => $this->additionalInfo, "description" => $this->description, "technicalDetails" => $this->technicalDetails, "productName" => $this->productName);
 		$statement->execute($parameters);
 
-		//update the null productId with what mySWL just gave us
+		//update the null productId with what mySQL just gave us
 		$this->productId = intval($pdo->lastInsertId());
 	}
 
@@ -312,7 +312,7 @@ class Product {
 	public function delete(PDO $pdo) {
 		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
 		if($this->productId === null) {
-			throw(new PDOException("Unable to delete something that doesn't exist"));
+			throw(new PDOException("Unable to delete a product that doesn't exist"));
 		}
 
 		//create query template
@@ -327,7 +327,7 @@ class Product {
 	public function update(PDO $pdo) {
 		//Enforce that the primary key is not null. You can't update something that does not exist
 		if($this->productId === null) {
-			throw(new PDOException("Unable to update something that doesn't exist"));
+			throw(new PDOException("Unable to update a product that doesn't exist"));
 		}
 
 		//create query template
@@ -335,7 +335,7 @@ class Product {
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the place holders in the template
-		$parameters = array("productImage" => $this->productImage, "productPrice" => $this->productPrice, "additionalInfo" => $this->additionalInfo, "description" => $this->description, "technicalDetails" => $this->technicalDetails, "productName" => $this->productName);
+		$parameters = array("productImage" => $this->productImage, "productPrice" => $this->productPrice, "additionalInfo" => $this->additionalInfo, "description" => $this->description, "technicalDetails" => $this->technicalDetails, "productName" => $this->productName, "productId" => $this->productId);
 		$statement->execute($parameters);
 	}
 

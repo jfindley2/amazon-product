@@ -271,4 +271,66 @@ class Review {
 	public function __toString() {
 		return "A review was given. This is what was said: " . $this->getReviewText();
 	}
+
+	/**
+	 * Inserts this Review into mySQL
+	 *
+	 * @param PDO $pdo PDO connection Object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function insert(PDO $pdo) {
+		//Enforce that the profileId is null (Id est, don't insert a review that already exists)
+		if($this->reviewId !== null) {
+			throw(new PDOException("Not a new review"));
+		}
+
+		//create query template
+		$query = "INSERT INTO review(productId, profileId, reviewText, starVote, reviewDate) VALUES(:productId, :profileId, :reviewText, :starVote, :reviewDate)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->reviewDate->format("Y-m-d H:i:s");
+		$parameters = array("productId" => $this->productId, "profileId" => $this->profileId, "reviewText" => $this->reviewText, "starVote" => $this->starVote, "reviewDate" => $formattedDate);
+		$statement->execute($parameters);
+
+		//update the null reviewId with what mySQL just gave us
+		$this->reviewId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Review from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function delete(PDO $pdo) {
+		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
+		if($this->reviewId === null) {
+			throw(new PDOException("Unable to delete a review that doesn't exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM review WHERE reviewId = :reviewId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holder in the template
+		$parameters = array("reviewId" => $this->reviewId);
+		$statement->execute($parameters);
+	}
+
+	public function update(PDO $pdo) {
+		//Enforce that the primary key is not null. You can't update something that does not exist
+		if($this->reviewId === null) {
+			throw(new PDOException("Unable to update a review that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE review SET productId = :productId, profileId = :profileId, reviewText = :reviewText, starVote = :starVote, reviewDate = :reviewDate WHERE reviewId = :reviewId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->reviewDate->format("Y-m-d H:i:s");
+		$parameters = array("productId" => $this->productId, "profileId" => $this->profileId, "reviewText" => $this->reviewText, "starVote" => $this->starVote, "reviewDate" => $formattedDate, "reviewId" => $this->reviewId);
+		$statement->execute($parameters);
+	}
 }

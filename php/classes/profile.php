@@ -198,7 +198,7 @@ class Profile {
 		$parameters = array("profileName" => $this->profileName, "location" => $this->location, "blurb" => $this->blurb);
 		$statement->execute($parameters);
 
-		//update the null profileId with what mySWL just gave us
+		//update the null profileId with what mySQL just gave us
 		$this->profileId = intval($pdo->lastInsertId());
 	}
 
@@ -234,7 +234,7 @@ class Profile {
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the place holders in the template
-		$parameters = array("profileName" => $this->profileName, "location" => $this->location, "blurb" => $this->blurb);
+		$parameters = array("profileName" => $this->profileName, "location" => $this->location, "blurb" => $this->blurb, "profileId" => $this->profileId);
 		$statement->execute($parameters);
 	}
 }
