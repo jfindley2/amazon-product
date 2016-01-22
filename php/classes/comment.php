@@ -78,7 +78,7 @@ class Comment {
 	}
 
 	/**
-	 * mutator method for $commentId
+	 * Mutator method for $commentId
 	 *
 	 * @param int $newCommentId
 	 * @throws InvalidArgumentException if $newCommentId is not a valid int
@@ -112,7 +112,7 @@ class Comment {
 	}
 
 	/**
-	 * mutator method for $profileId
+	 * Mutator method for $profileId
 	 *
 	 * @param int $newProfileId
 	 * @throws InvalidArgumentException if $newProfileId is not a proper int
@@ -133,7 +133,7 @@ class Comment {
 
 
 	/**
-	 * accessor method for $reviewId
+	 * Accessor method for $reviewId
 	 *
 	 * @return int value of $reviewId
 	 */
@@ -188,7 +188,7 @@ class Comment {
 
 
 	/**
-	 * accessor method for $commentDate
+	 * Accessor method for $commentDate
 	 *
 	 * @return DateTime value of comment date
 	 */
@@ -197,7 +197,7 @@ class Comment {
 	}
 
 	/**
-	 * mutator method for $commentDate
+	 * Mutator method for $commentDate
 	 *
 	 * @param mixed $newCommentDate commentDate as a DateTime object or string (Or null to load the current time)
 	 * @throws InvalidArgumentException if $newCommentDate is not a valid object or string

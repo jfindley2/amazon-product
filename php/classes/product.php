@@ -81,7 +81,7 @@ class Product {
 
 
 	/**
-	 * accessor method for productId
+	 * Accessor method for productId
 	 *
 	 * @return int value of productId
 	 */
@@ -90,7 +90,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for Product ID
+	 * Mutator method for Product ID
 	 *
 	 * @param int $newProductId
 	 * @throws InvalidArgumentException if $newProductId is not a proper int
@@ -116,7 +116,7 @@ class Product {
 
 
 	/**
-	 * accessor method for productImage
+	 * Accessor method for productImage
 	 * @return string value of productImage
 	 */
 	public function getProductImage() {
@@ -124,7 +124,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for productImage
+	 * Mutator method for productImage
 	 *
 	 * @param string $newProductImage
 	 * @throws InvalidArgumentException if newProductImage is not valid
@@ -141,7 +141,7 @@ class Product {
 
 
 	/**
-	 * accessor method for productPrice
+	 * Accessor method for productPrice
 	 *
 	 * @return int value of productPrice
 	 */
@@ -150,7 +150,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for Product Price
+	 * Mutator method for Product Price
 	 *
 	 * @param int $newProductPrice
 	 * @throws InvalidArgumentException if $newProductPrice is not a proper int
@@ -171,7 +171,7 @@ class Product {
 
 
 	/**
-	 * accessor method for additionalInfo
+	 * Accessor method for additionalInfo
 	 * @return string value of additionalInfo
 	 */
 	public function getAdditionalInfo() {
@@ -179,7 +179,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for additionalInfo
+	 * Mutator method for additionalInfo
 	 *
 	 * @param string $newAdditionalInfo
 	 * @throws InvalidArgumentException if newAdditionalInfo is not valid
@@ -196,7 +196,7 @@ class Product {
 
 
 	/**
-	 * accessor method for description
+	 * Accessor method for description
 	 * @return string value of description
 	 */
 	public function getDescription() {
@@ -204,7 +204,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for description
+	 * Mutator method for description
 	 *
 	 * @param string $newDescription
 	 * @throws InvalidArgumentException if newDescription is not valid
@@ -221,7 +221,7 @@ class Product {
 
 
 	/**
-	 * accessor method for technicalDetails
+	 * Accessor method for technicalDetails
 	 * @return string value of technicalDetails
 	 */
 	public function getTechnicalDetails() {
@@ -229,7 +229,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for technicalDetails
+	 * Mutator method for technicalDetails
 	 *
 	 * @param string $newTechnicalDetails
 	 * @throws InvalidArgumentException if $newTechnicalDetails is not valid
@@ -246,7 +246,7 @@ class Product {
 
 
 	/**
-	 * accessor method for productName
+	 * Accessor method for productName
 	 * @return string value of productName
 	 */
 	public function getProductName() {
@@ -254,7 +254,7 @@ class Product {
 	}
 
 	/**
-	 * mutator method for description
+	 * Mutator method for description
 	 *
 	 * @param string $newProductName
 	 * @throws InvalidArgumentException if $newProductName is not valid

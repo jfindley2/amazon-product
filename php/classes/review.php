@@ -77,7 +77,7 @@ class Review {
 
 
 	/**
-	 * accessor method for $reviewId
+	 * Accessor method for $reviewId
 	 *
 	 * @return int value of $reviewId
 	 */
@@ -113,7 +113,7 @@ class Review {
 
 
 	/**
-	 * accessor method for productId
+	 * Accessor method for productId
 	 *
 	 * @return int value of productId
 	 */
@@ -122,7 +122,7 @@ class Review {
 	}
 
 	/**
-	 * mutator method for Product ID
+	 * Mutator method for Product ID
 	 *
 	 * @param int $newProductId
 	 * @throws InvalidArgumentException if $newProductId is not a proper int
@@ -151,7 +151,7 @@ class Review {
 	}
 
 	/**
-	 * mutator method for $profileId
+	 * Mutator method for $profileId
 	 *
 	 * @param int $newProfileId
 	 * @throws InvalidArgumentException if $newProfileId is not a proper int
@@ -197,7 +197,7 @@ class Review {
 
 
 	/**
-	 * accessor method for $starVote
+	 * Accessor method for $starVote
 	 *
 	 * @return int value of $starVote
 	 */
@@ -206,7 +206,7 @@ class Review {
 	}
 
 	/**
-	 * mutator method for $starVote
+	 * Mutator method for $starVote
 	 *
 	 * @param int $newStarVote
 	 * @throws InvalidArgumentException if $newStarVote is not a proper int
@@ -226,7 +226,7 @@ class Review {
 
 
 	/**
-	 * accessor method for $reviewDate
+	 * Accessor method for $reviewDate
 	 *
 	 * @return DateTime value of review date
 	 */
@@ -235,7 +235,7 @@ class Review {
 	}
 
 	/**
-	 * mutator method for $reviewDate
+	 * Mutator method for $reviewDate
 	 *
 	 * @param mixed $newReviewDate reviewDate as a DateTime object or string (Or null to load the current time)
 	 * @throws InvalidArgumentException if $newReviewDate is not a valid object or string

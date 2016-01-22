@@ -57,7 +57,7 @@ class HelpfulVote {
 	}
 
 	/**
-	 * mutator method for $profileId
+	 * Mutator method for $profileId
 	 *
 	 * @param int $newProfileId
 	 * @throws InvalidArgumentException if $newProfileId is not a proper int
