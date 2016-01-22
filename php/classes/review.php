@@ -240,4 +240,7 @@ class Review {
 		}
 		$this->reviewDate = $newReviewDate;
 	}
+	public function __toString() {
+		return "A review was given. This is what was said: " . $this->getReviewText();
+	}
 }

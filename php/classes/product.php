@@ -246,4 +246,7 @@ class Product {
 		}
 		$this->productName = $newProductName;
 	}
+	public function __toString() {
+		return "The product is " . $this->getProductName() . ". It sells for $" . $this->getProductPrice() . ".";
+	}
 }

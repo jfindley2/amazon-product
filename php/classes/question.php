@@ -206,4 +206,7 @@ class Question {
 		}
 		$this->questionDate = $newQuestionDate;
 	}
+	public function __toString() {
+		return "A question was asked. This is the question: \"" . $this->getQuestionText() . "\"";
+	}
 }

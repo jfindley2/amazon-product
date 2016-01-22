@@ -121,4 +121,7 @@ class HelpfulVote {
 		}
 		$this->theVote = $newTheVote;
 	}
+	public function __toString() {
+		return "This was " . $this->getTheVote() === TRUE ? "indeed " : "not " . "voted helpful.";
+	}
 }

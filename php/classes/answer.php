@@ -54,7 +54,7 @@ class Answer {
 		try {
 			$this->setAnswerId($newAnswerId);
 			$this->setProfileId($newProfileId);
-			$this->setAnswerId($newAnswerId);
+			$this->setQuestionId($newQuestionId);
 			$this->setAnswerText($newAnswerText);
 			$this->setAnswerDate($newAnswerDate);
 		} catch(InvalidArgumentException $invalidArgument) {
@@ -210,5 +210,8 @@ class Answer {
 			throw(new Exception($exception->getMessage(), 0, $exception));
 		}
 		$this->answerDate = $newAnswerDate;
+	}
+	public function __toString() {
+		return "A question was answered. This is the answer: \"" . $this->getAnswerText() . "\"";
 	}
 }

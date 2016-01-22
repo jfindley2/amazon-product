@@ -154,4 +154,8 @@ class Profile {
 		}
 		$this->blurb = $newBlurb;
 	}
+
+	public function __toString() {
+		return "The username of this user is " . $this->getName() . ". They are located at " . $this->getLocation() . ". This is what they have to say about themselves: " . $this->getBlurb();
+	}
 }

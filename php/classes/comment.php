@@ -209,4 +209,7 @@ class Comment {
 		}
 		$this->commentDate = $newCommentDate;
 	}
+	public function __toString() {
+		return "A comment on a review was given. This is what was said: " . $this->getCommentText();
+	}
 }
