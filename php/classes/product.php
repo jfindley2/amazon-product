@@ -3,6 +3,8 @@
 /**
  * Class Product
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * The item being sold.
  */
 
 class Product {

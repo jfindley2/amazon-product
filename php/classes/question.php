@@ -5,6 +5,8 @@ require_once(dirname(__DIR__) . "/date-utils.php");
  * Class Question
  *
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * On a product's page, questions about the product can be asked.
  */
 class Question {
 	/**

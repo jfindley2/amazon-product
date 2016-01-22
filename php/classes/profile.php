@@ -4,6 +4,8 @@
  * Class Profile
  *
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * This is the, "Person," who performs actions, such as commenting and reviewing and what-have-you.
  */
 class Profile {
 	/**

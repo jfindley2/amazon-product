@@ -5,6 +5,8 @@ require_once(dirname(__DIR__) . "/date-utils.php");
  * Class Comment
  *
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * Comments on the review of the product.
  */
 
 class Comment {

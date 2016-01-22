@@ -5,6 +5,8 @@ require_once(dirname(__DIR__) . "/date-utils.php");
  * Class Answer
  *
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * Answers to the questions asked on the pages of the products.
  */
 
 class Answer {

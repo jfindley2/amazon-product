@@ -5,6 +5,8 @@ require_once(dirname(__DIR__) . "/date-utils.php");
  * Class Review
  *
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * The review of a product.
  */
 
 class Review {

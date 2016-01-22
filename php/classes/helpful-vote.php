@@ -4,6 +4,8 @@
  * Class HelpfulVote
  *
  * @author Jacob Findley <jfindley2@cnm.edu>
+ *
+ * So, this class refers to how a review can be voted as either, "Helpful," or, "Not helpful." Thus giving the user the ability to organise the reviews seen by their quality.
  */
 class HelpfulVote {
 
