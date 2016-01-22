@@ -91,6 +91,12 @@ class Review {
 	 * @throws RangeException if $newReviewId is not positive
 	 */
 	public function setReviewId($newReviewId) {
+
+		if($newReviewId === null) {
+			$this->reviewId = null;
+			return;
+		}
+
 		$newReviewId = filter_var($newReviewId, FILTER_VALIDATE_INT);
 		//If filter_var rejects the variable, throw an exception
 		if($newReviewId === false) {

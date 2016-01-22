@@ -95,11 +95,18 @@ class Product {
 	 * @throws RangeException if $newProductId is not positive
 	 */
 	public function setProductId($newProductId) {
+
+		if($newProductId === null) {
+			$this->productId = null;
+			return;
+		}
+
 		$newProductId = filter_var($newProductId, FILTER_VALIDATE_INT);
 		//if filter_var rejects the variable, throw an exception
 		if($newProductId === false) {
 			throw(new InvalidArgumentException("Product Id is not a proper int"));
 		}
+
 		//If $newProductId is not positive, throw an exception.
 		if($newProductId <= 0) {
 			throw(new RangeException("Product ID must be positive"));

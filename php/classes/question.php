@@ -84,6 +84,11 @@ class Question {
 	 * @throws RangeException if $newQuestionId is not positive
 	 */
 	public function setQuestionId($newQuestionId) {
+		if($newQuestionId === null) {
+			$this->questionId = null;
+			return;
+		}
+
 		$newQuestionId = filter_var($newQuestionId, FILTER_VALIDATE_INT);
 		//If filter_var rejects the variable, throw an exception
 		if($newQuestionId === false) {

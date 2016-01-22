@@ -75,6 +75,11 @@ class Profile {
 	 * @throws RangeException if $newProfileId is not positive
 	 */
 	public function setProfileId($newProfileId) {
+		if($newProfileId === null) {
+			$this->profileId = null;
+			return;
+		}
+
 		$newProfileId = filter_var($newProfileId, FILTER_VALIDATE_INT);
 		//if filter_var rejects the variable, throw an exception
 		if($newProfileId === false) {

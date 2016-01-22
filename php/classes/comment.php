@@ -86,6 +86,11 @@ class Comment {
 	 * @throws RangeException if $newCommentID is not positive
 	 */
 	public function setCommentId($newCommentId) {
+		if($newCommentId === null) {
+			$this->commentId = null;
+			return;
+		}
+
 		$newCommentId = filter_var($newCommentId, FILTER_VALIDATE_INT);
 		//if filter_var rejects the variable, throw an exception
 		if($newCommentId === false) {
