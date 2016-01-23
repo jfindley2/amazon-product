@@ -232,4 +232,66 @@ class Question {
 	public function __toString() {
 		return "A question was asked. This is the question: " . $this->getQuestionText();
 	}
+
+	/**
+	 * Inserts this Question into mySQL
+	 *
+	 * @param PDO $pdo PDO connection Object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function insert(PDO $pdo) {
+		//Enforce that the profileId is null (Id est, don't insert a question that already exists)
+		if($this->questionId !== null) {
+			throw(new PDOException("Not a new question"));
+		}
+
+		//create query template
+		$query = "INSERT INTO question(productId, profileId, questionText, questionDate) VALUES(:productId, :profileId, :questionText, :questionDate)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->questionDate->format("Y-m-d H:i:s");
+		$parameters = array("productId" => $this->productId, "profileId" => $this->profileId, "questionText" => $this->questionText, "questionDate" => $formattedDate);
+		$statement->execute($parameters);
+
+		//update the null questionId with what mySQL just gave us
+		$this->questionId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Question from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function delete(PDO $pdo) {
+		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
+		if($this->questionId === null) {
+			throw(new PDOException("Unable to delete a question that doesn't exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM question WHERE questionId = :questionId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holder in the template
+		$parameters = array("questionId" => $this->questionId);
+		$statement->execute($parameters);
+	}
+
+	public function update(PDO $pdo) {
+		//Enforce that the primary key is not null. You can't update something that does not exist
+		if($this->questionId === null) {
+			throw(new PDOException("Unable to update a question that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE question SET productId = :productId, profileId = :profileId, questionText = :questionText, questionDate = :questionDate WHERE questionId = :questionId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->questionDate->format("Y-m-d H:i:s");
+		$parameters = array("productId" => $this->productId, "profileId" => $this->profileId, "questionText" => $this->questionText, "questionDate" => $formattedDate, "questionId" => $this->questionId);
+		$statement->execute($parameters);
+	}
 }
