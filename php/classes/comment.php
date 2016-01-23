@@ -232,4 +232,66 @@ class Comment {
 	public function __toString() {
 		return "A comment on a review was given. This is what was said: " . $this->getCommentText();
 	}
+
+	/**
+	 * Inserts this Comment into mySQL
+	 *
+	 * @param PDO $pdo PDO connection Object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function insert(PDO $pdo) {
+		//Enforce that the commentId is null (Id est, don't insert a comment that already exists)
+		if($this->commentId !== null) {
+			throw(new PDOException("Not a new comment"));
+		}
+
+		//create query template
+		$query = "INSERT INTO comment(profileId, reviewId, commentText, commentDate) VALUES(:profileId, :reviewId, :commentText, :commentDate)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->commentDate->format("Y-m-d H:i:s");
+		$parameters = array("profileId" => $this->profileId, "reviewId" => $this->reviewId, "commentText" => $this->commentText, "commentDate" => $formattedDate);
+		$statement->execute($parameters);
+
+		//update the null commentId with what mySQL just gave us
+		$this->commentId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Comment from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function delete(PDO $pdo) {
+		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
+		if($this->commentId === null) {
+			throw(new PDOException("Unable to delete a comment that doesn't exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM comment WHERE commentId = :commentId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holder in the template
+		$parameters = array("commentId" => $this->commentId);
+		$statement->execute($parameters);
+	}
+
+	public function update(PDO $pdo) {
+		//Enforce that the primary key is not null. You can't update something that does not exist
+		if($this->commentId === null) {
+			throw(new PDOException("Unable to update a comment that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE comment SET profileId = :profileId, reviewId = :reviewId, commentText = :commentText, commentDate = :commentDate WHERE commentId = :commentId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->commentDate->format("Y-m-d H:i:s");
+		$parameters = array("profileId" => $this->profileId, "reviewId" => $this->reviewId, "commentText" => $this->commentText, "commentDate" => $formattedDate, "commentId" => $this->commentId);
+		$statement->execute($parameters);
+	}
 }
