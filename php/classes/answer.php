@@ -231,4 +231,65 @@ class Answer {
 	public function __toString() {
 		return "A question was answered. This is the answer: " . $this->getAnswerText();
 	}
+	/**
+	 * Inserts this Answer into mySQL
+	 *
+	 * @param PDO $pdo PDO connection Object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function insert(PDO $pdo) {
+		//Enforce that the profileId is null (Id est, don't insert a answer that already exists)
+		if($this->answerId !== null) {
+			throw(new PDOException("Not a new answer"));
+		}
+
+		//create query template
+		$query = "INSERT INTO answer(profileId, questionId, answerText, answerDate) VALUES(:profileId, :questionId, :answerText, :answerDate)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->answerDate->format("Y-m-d H:i:s");
+		$parameters = array("profileId" => $this->profileId, "questionId" => $this->questionId, "answerText" => $this->answerText, "answerDate" => $formattedDate);
+		$statement->execute($parameters);
+
+		//update the null answerId with what mySQL just gave us
+		$this->answerId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Answer from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+	public function delete(PDO $pdo) {
+		//Enforce that the Primary Key is not null (You can't delete that which does not exist)
+		if($this->answerId === null) {
+			throw(new PDOException("Unable to delete an answer that doesn't exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM answer WHERE answerId = :answerId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holder in the template
+		$parameters = array("answerId" => $this->answerId);
+		$statement->execute($parameters);
+	}
+
+	public function update(PDO $pdo) {
+		//Enforce that the primary key is not null. You can't update something that does not exist
+		if($this->answerId === null) {
+			throw(new PDOException("Unable to update an answer that doesn't exist"));
+		}
+
+		//create query template
+		$query = "UPDATE answer SET profileId = :profileId, questionId = :questionId, answerText = :answerText, answerDate = :answerDate WHERE answerId = :answerId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$formattedDate = $this->answerDate->format("Y-m-d H:i:s");
+		$parameters = array("profileId" => $this->profileId, "questionId" => $this->questionId, "answerText" => $this->answerText, "answerDate" => $formattedDate, "answerId" => $this->answerId);
+		$statement->execute($parameters);
+	}
 }
