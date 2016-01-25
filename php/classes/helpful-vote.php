@@ -139,6 +139,23 @@ class HelpfulVote {
 		return "This was " . $this->getTheVote() === TRUE ? "indeed " : "not " . "voted helpful.";
 	}
 
+	public function insert(PDO $pdo) {
+		//Test to make sure that we have a valid profile voting on a valid review
+		if ($this->profileId === null) {
+			throw (new PDOException("The profile does not exist"));
+		}
+		if ($this->reviewId === null) {
+			throw (new PDOException("The review does not exist"));
+		}
+		//Create a query template
+		$query = "INSERT INTO helpfulVote(theVote) VALUE (:theVote)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in the template
+		$parameters = array("theVote" => $this->theVote);
+		$statement->execute($parameters);
+
+	}
 
 	/**
 	 * deletes this HelpfulVote from mySQL
