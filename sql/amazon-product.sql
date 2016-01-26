@@ -64,7 +64,7 @@
  -- I need to add a value to helpful vote--boolean? Binary? Tinyint?
  -- By the way, "Helpful Vote," refers to how the reviews can be reviewed as either,
  -- "Helpful," or, "Not Helpful" on amazon. Each user can only vote on a review once.
-	CREATE TABLE helpfulVote(
+	CREATE TABLE profileReview(
 	profileId INT UNSIGNED NOT NULL,
 	reviewId INT UNSIGNED NOT NULL,
 	theVote BIT NOT NULL,
